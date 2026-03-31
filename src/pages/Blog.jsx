@@ -87,11 +87,53 @@ const Blog = () => {
       excerpt: "학기를 마무리하며 시작한 첫 스터디 장 활동. 어떻게 사람들을 모으고, 어떤 커리큘럼으로 8주를 달렸는지 진솔하게 남겨본다.",
       date: "2024. 06. 01",
       tags: ["Study", "Retrospective"]
+    },
+    {
+      id: "13",
+      title: "React 라이프사이클과 Hooks 알아보기",
+      excerpt: "useEffect와 useState의 명확한 차이와 활용법. 컴포넌트가 마운트되고 언마운트되는 과정을 깊이 있게 살펴봅니다.",
+      date: "2024. 06. 10",
+      tags: ["React", "Frontend"]
+    },
+    {
+      id: "14",
+      title: "RESTFul API란 무엇인가? 개념과 설계 가이드",
+      excerpt: "GET, POST, PUT, DELETE 메서드의 차이점과 좋은 REST API 엔드포인트를 설계하는 방법에 대한 학습 정리.",
+      date: "2024. 06. 15",
+      tags: ["API", "Backend", "Network"]
+    },
+    {
+      id: "15",
+      title: "동적 계획법(DP) - 쪼개서 생각하면 풀리는 마법",
+      excerpt: "피보나치 수열부터 배낭 문제(Knapsack)까지, 메모이제이션(Memoization)을 통해 시간 복잡도를 혁신적으로 줄이는 알고리즘 원리.",
+      date: "2024. 06. 20",
+      tags: ["Algorithm", "Dynamic-Programming"]
+    },
+    {
+      id: "16",
+      title: "소프트웨어 공학 개론: 애자일(Agile)과 폭포수(Waterfall)",
+      excerpt: "소프트웨어를 어떻게 기획하고 만들어야 효율적일까? 팀 협업을 위한 다양한 개발론과 스프린트 프로세스 이해하기.",
+      date: "2024. 06. 28",
+      tags: ["Software-Engineering", "Theory"]
+    },
+    {
+      id: "17",
+      title: "Docker 기초: 내 PC에서 되는데 서버에선 안돼요?",
+      excerpt: "환경 의존성 문제를 해결하는 마법의 고래. 도커 이미지 빌드와 컨테이너 실행의 핵심 개념을 알아봅니다.",
+      date: "2024. 07. 05",
+      tags: ["Docker", "DevOps"]
+    },
+    {
+      id: "18",
+      title: "1학기를 마치며: 성적보다 값진 실패의 경험들",
+      excerpt: "원하는 학점을 받지 못한 과목도 있지만, 코딩에 있어서만큼은 엄청난 성장이 있었던 한 학기를 되돌아봅니다.",
+      date: "2024. 07. 10",
+      tags: ["Life", "Retrospective"]
     }
   ];
 
   // Pagination states
-  const postsPerPage = 4;
+  const postsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(posts.length / postsPerPage);
 
