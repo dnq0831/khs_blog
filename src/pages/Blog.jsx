@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import PostCard from '../components/PostCard';
 
 const Blog = () => {
-  // Mock data for initial blog showcase
+  // Mock data for initial blog showcase (Expanded to 12 posts)
   const posts = [
     {
       id: "1",
@@ -30,11 +31,84 @@ const Blog = () => {
       excerpt: "기대했던 대학 생활과 코딩. 선배들의 조언, 실제 들어본 전공 수업들, 그리고 내가 느낀 점들을 솔직하게 기록합니다.",
       date: "2024. 04. 02",
       tags: ["Life", "Freshman"]
+    },
+    {
+      id: "5",
+      title: "자료구조 첫걸음: 스택(Stack)과 큐(Queue)",
+      excerpt: "프로그램의 근간이 되는 자료구조. 그중에서도 가장 기본이자 핵심인 LIFO 구조와 FIFO 구조의 원리를 파헤쳐봅니다.",
+      date: "2024. 04. 10",
+      tags: ["Data-Structure", "Computer-Science"]
+    },
+    {
+      id: "6",
+      title: "터미널이 무섭지 않아졌다: 리눅스 기본 명령어 모음집",
+      excerpt: "cd, ls, mkdir, rm... 윈도우 GUI만 쓰던 내가 드디어 검은 화면과 흰 글씨 환경에 조금씩 적응해나가는 과정.",
+      date: "2024. 04. 15",
+      tags: ["Linux", "Terminal"]
+    },
+    {
+      id: "7",
+      title: "첫 교내 해커톤 참가 후기: 24시간 밤새기 프로젝트",
+      excerpt: "아이디어 도출부터 프로토타입 완성까지, 피자와 에너지 드링크로 버티며 팀원들과 함께한 생생한 무박 2일 기록.",
+      date: "2024. 04. 28",
+      tags: ["Hackathon", "Project", "Diary"]
+    },
+    {
+      id: "8",
+      title: "Java 객체지향의 꽃: 다형성(Polymorphism) 이해하기",
+      excerpt: "오버로딩과 오버라이딩은 어떻게 다를까? 객체지향 삼대장 중 하나인 다형성을 실제 코드 예시와 함께 다시 정리한다.",
+      date: "2024. 05. 05",
+      tags: ["Java", "OOP"]
+    },
+    {
+      id: "9",
+      title: "Git과 GitHub, 이제 커밋(Commit)이 두렵지 않다",
+      excerpt: "매번 오류가 났던 git push 환경. 충돌(conflict)을 겪으며 배운 브랜치 전략과 협업의 기본 프로세스 총정리.",
+      date: "2024. 05. 12",
+      tags: ["Git", "GitHub", "Tools"]
+    },
+    {
+      id: "10",
+      title: "데이터베이스 실습 시간: 단순 쿼리부터 JOIN까지",
+      excerpt: "MySQL을 활용하여 관계형 데이터베이스를 구축해보았다. INNER JOIN, LEFT JOIN 등 실무에 당장 쓸 수 있는 SQL 꿀팁.",
+      date: "2024. 05. 18",
+      tags: ["Database", "SQL"]
+    },
+    {
+      id: "11",
+      title: "컴퓨터 구조: CPU는 어떻게 명령을 실행할까?",
+      excerpt: "메모리 계층 구조, 레지스터, ALU의 역할. 우리가 작성한 코드가 어떻게 물리적 기계어로 변환되어 작동하는지 공부한 내용.",
+      date: "2024. 05. 24",
+      tags: ["Computer-Architecture", "CS"]
+    },
+    {
+      id: "12",
+      title: "여름방학 코딩 스터디 모집 회고록",
+      excerpt: "학기를 마무리하며 시작한 첫 스터디 장 활동. 어떻게 사람들을 모으고, 어떤 커리큘럼으로 8주를 달렸는지 진솔하게 남겨본다.",
+      date: "2024. 06. 01",
+      tags: ["Study", "Retrospective"]
     }
   ];
 
+  // Pagination states
+  const postsPerPage = 4;
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+
+  // Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  // Handle page change
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    // Scroll to top of the blog container smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <div className="container animate-fade-in" style={{ padding: '2rem 1.5rem' }}>
+    <div className="container animate-fade-in" style={{ padding: '2rem 1.5rem', minHeight: '80vh', display: 'flex', flexDirection: 'column' }}>
       <div style={{ marginBottom: '4rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '2rem' }}>
         <h1 className="gradient-text">My Log.</h1>
         <p style={{ fontSize: '1.25rem' }}>
@@ -45,12 +119,81 @@ const Blog = () => {
       <div style={{ 
         display: 'grid', 
         gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', 
-        gap: '2rem' 
+        gap: '2rem',
+        flex: 1
       }}>
-        {posts.map(post => (
+        {currentPosts.map(post => (
           <PostCard key={post.id} {...post} />
         ))}
       </div>
+
+      {/* Pagination UI */}
+      {totalPages > 1 && (
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          marginTop: '4rem',
+          gap: '0.5rem'
+        }}>
+          <button 
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            style={{
+              padding: '0.5rem 1rem',
+              border: '1px solid var(--border-color)',
+              background: 'var(--card-bg)',
+              color: currentPage === 1 ? 'var(--text-secondary)' : 'var(--text-primary)',
+              borderRadius: '8px',
+              cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+              opacity: currentPage === 1 ? 0.5 : 1,
+              transition: 'all 0.2s'
+            }}
+          >
+            이전
+          </button>
+          
+          {[...Array(totalPages)].map((_, index) => {
+            const pageNumber = index + 1;
+            return (
+              <button
+                key={pageNumber}
+                onClick={() => handlePageChange(pageNumber)}
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  border: pageNumber === currentPage ? 'none' : '1px solid var(--border-color)',
+                  background: pageNumber === currentPage ? 'var(--primary-color)' : 'var(--card-bg)',
+                  color: pageNumber === currentPage ? '#fff' : 'var(--text-primary)',
+                  borderRadius: '8px',
+                  fontWeight: pageNumber === currentPage ? '600' : '400',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s'
+                }}
+              >
+                {pageNumber}
+              </button>
+            );
+          })}
+
+          <button 
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            style={{
+              padding: '0.5rem 1rem',
+              border: '1px solid var(--border-color)',
+              background: 'var(--card-bg)',
+              color: currentPage === totalPages ? 'var(--text-secondary)' : 'var(--text-primary)',
+              borderRadius: '8px',
+              cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
+              opacity: currentPage === totalPages ? 0.5 : 1,
+              transition: 'all 0.2s'
+            }}
+          >
+            다음
+          </button>
+        </div>
+      )}
     </div>
   );
 };
