@@ -1,4 +1,4 @@
-import { ArrowRight, Code, Database, Cpu, Terminal, Github, Mail, Smartphone, BookOpen } from 'lucide-react';
+import { ArrowRight, Code, Database, Cpu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -77,7 +77,7 @@ const Home = () => {
           
           <div className="glass-card" style={{ padding: '2.5rem' }}>
             <div style={{ background: 'rgba(168, 85, 247, 0.1)', width: '60px', height: '60px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-              <Terminal size={32} color="var(--accent-secondary)" />
+              <span style={{ fontSize: '32px' }}>💻</span>
             </div>
             <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Constant Learning</h3>
             <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
@@ -103,7 +103,7 @@ const Home = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
           <div>
             <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <BookOpen size={24} color="var(--accent-primary)"/> 대학교 전공 교과
+              <span style={{ fontSize: '24px' }}>📖</span> 대학교 전공 교과
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <li style={{ background: 'var(--card-bg)', padding: '1rem 1.5rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
@@ -120,7 +120,7 @@ const Home = () => {
 
           <div>
             <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Smartphone size={24} color="var(--accent-secondary)"/> 개인 학습 및 웹 개발
+              <span style={{ fontSize: '24px' }}>📱</span> 개인 학습 및 웹 개발
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <li style={{ background: 'var(--card-bg)', padding: '1rem 1.5rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
@@ -146,12 +146,12 @@ const Home = () => {
         
         <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
           <a href="https://github.com" target="_blank" rel="noreferrer" className="glass-card" style={{ padding: '1.5rem 3rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', textDecoration: 'none', color: 'inherit', transition: 'transform 0.2s', cursor: 'pointer' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
-            <Github size={40} />
+            <span style={{ fontSize: '40px' }}>🐙</span>
             <span style={{ fontWeight: '500' }}>GitHub 프로필</span>
           </a>
           
           <a href="mailto:example@gmail.com" className="glass-card" style={{ padding: '1.5rem 3rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', textDecoration: 'none', color: 'inherit', transition: 'transform 0.2s', cursor: 'pointer' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
-            <Mail size={40} color="var(--accent-primary)" />
+            <span style={{ fontSize: '40px' }}>✉️</span>
             <span style={{ fontWeight: '500' }}>이메일 보내기</span>
           </a>
         </div>

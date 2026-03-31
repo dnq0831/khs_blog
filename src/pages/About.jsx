@@ -1,4 +1,4 @@
-import { BookOpen, MapPin, Award, Calendar, Lightbulb, User, Settings, Camera } from 'lucide-react';
+import { BookOpen, MapPin, Award } from 'lucide-react';
 
 const About = () => {
   return (
@@ -59,7 +59,7 @@ const About = () => {
           {/* Section 1: My Story */}
           <section>
             <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '2rem', marginBottom: '2rem' }}>
-              <User size={32} color="var(--accent-primary)" />
+              <span style={{ fontSize: '32px' }}>🧑‍🎓</span>
               My Story
             </h2>
             <div className="glass" style={{ padding: '2.5rem', borderRadius: '16px', lineHeight: '1.8' }}>
@@ -79,7 +79,7 @@ const About = () => {
           {/* Section 2: Education & Timeline */}
           <section>
             <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '2rem', marginBottom: '2rem' }}>
-              <Calendar size={32} color="var(--accent-secondary)" />
+              <span style={{ fontSize: '32px' }}>📅</span>
               Education & Timeline
             </h2>
             
@@ -157,14 +157,14 @@ const About = () => {
           {/* Section 4: Daily Routine & Setup */}
           <section>
             <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '2rem', marginBottom: '2rem' }}>
-              <Settings size={32} color="var(--accent-primary)" />
+              <span style={{ fontSize: '32px' }}>⚙️</span>
               My Environment & Routine
             </h2>
             <div className="glass" style={{ padding: '2.5rem', borderRadius: '16px' }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem' }}>
                 <div>
                   <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem', color: 'var(--accent-primary)' }}>
-                    <Lightbulb size={20} /> Daily Routine
+                    <span style={{ fontSize: '20px' }}>💡</span> Daily Routine
                   </h3>
                   <ul style={{ paddingLeft: '1.2rem', color: 'var(--text-secondary)', lineHeight: '2' }}>
                     <li><strong>08:00 AM</strong> : 기상 및 학교 등교</li>
@@ -176,7 +176,7 @@ const About = () => {
                 </div>
                 <div>
                   <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem', color: 'var(--accent-secondary)' }}>
-                    <Camera size={20} /> Dev Setup
+                    <span style={{ fontSize: '20px' }}>📷</span> Dev Setup
                   </h3>
                   <ul style={{ paddingLeft: '1.2rem', color: 'var(--text-secondary)', lineHeight: '2' }}>
                     <li><strong>Laptop</strong> : MacBook Air M2 16GB</li>
