@@ -1,162 +1,236 @@
-import { ArrowRight, Code, Database, Cpu } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { motion } from 'framer-motion';
+
+const pageVariants = {
+  initial: { opacity: 0, y: 20 },
+  in: { opacity: 1, y: 0 },
+  out: { opacity: 0, y: -20 }
+};
+
+const pageTransition = {
+  type: 'tween',
+  ease: 'anticipate',
+  duration: 0.5
+};
 
 const Home = () => {
   return (
-    <div className="container animate-fade-in">
+    <motion.div 
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+      className="relative pt-20 overflow-hidden w-full"
+    >
+      {/* Background Accents */}
+      <div className="absolute inset-0 grid-bg -z-10"></div>
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-container/10 rounded-full blur-[120px] -z-10"></div>
+      <div className="absolute bottom-[20%] right-[-5%] w-[30%] h-[50%] bg-secondary-container/5 rounded-full blur-[100px] -z-10"></div>
+      
       {/* Hero Section */}
-      <section className="section" style={{ 
-        display: 'flex', 
-        flexDirection: 'column', 
-        alignItems: 'center', 
-        textAlign: 'center',
-        minHeight: '80vh',
-        justifyContent: 'center',
-        borderBottom: '1px solid var(--border-color)',
-        paddingBottom: '4rem'
-      }}>
-        <div style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '0.5rem',
-          padding: '0.5rem 1rem',
-          borderRadius: '2rem',
-          background: 'rgba(59, 130, 246, 0.1)',
-          border: '1px solid rgba(59, 130, 246, 0.2)',
-          color: 'var(--accent-primary)',
-          fontSize: '0.875rem',
-          fontWeight: '500',
-          marginBottom: '2rem'
-        }}>
-          <span>🚀 Hello World! I'm a CS Freshman ✨</span>
-        </div>
-
-        <h1 style={{ marginBottom: '1.5rem', letterSpacing: '-0.025em', fontSize: '3.5rem', lineHeight: '1.2' }}>
-          공학 3계열 <span className="gradient-text">컴퓨터 소프트웨어</span><br/>
-          개발자로의 첫 걸음
-        </h1>
-        
-        <p style={{ maxWidth: '650px', fontSize: '1.2rem', marginBottom: '2.5rem', margin: '0 auto 2.5rem', color: 'var(--text-secondary)' }}>
-          코드 한 줄이 세상을 바꿀 수 있다고 믿습니다. 아직은 배우는 단계이지만, 매일 새로운 것을 시도하고 에러를 마주하며 
-          탄탄한 소프트웨어 엔지니어로 성장해 나가고 있습니다. 이곳은 저의 모든 삽질과 성장의 기록입니다.
-        </p>
-
-        <div style={{ display: 'flex', gap: '1rem' }}>
-          <Link to="/about" className="btn btn-primary">
-            자세한 소개 보기 <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
-          </Link>
-          <Link to="/blog" className="btn btn-outline">
-            개발 기록 읽기
-          </Link>
-        </div>
-      </section>
-
-      {/* Core Philosophy Section */}
-      <section style={{ padding: '6rem 0', borderBottom: '1px solid var(--border-color)' }}>
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>My Development Philosophy</h2>
-          <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-            단순히 작동하는 코드를 넘어서, 왜 이렇게 작성했는지 고민하는 개발자가 되고 싶습니다.
+      <section className="max-w-7xl mx-auto px-8 py-24 md:py-32 flex flex-col md:flex-row items-center gap-16">
+        <div className="flex-1 space-y-8 z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-highest text-secondary-fixed text-xs font-mono uppercase tracking-[0.2em]">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span>
+            </span>
+            System_Status: Building
+          </div>
+          <div className="mb-4 inline-block tracking-[0.3em] font-black text-6xl text-transparent bg-clip-text bg-gradient-to-r from-[#00FF9C] to-[#00A3FF] drop-shadow-[0_0_20px_rgba(0,255,156,0.6)]">HOME</div>
+          <h1 className="text-5xl md:text-[5rem] font-headline font-black leading-[1.1] tracking-tight text-primary">
+            공학 3계열 컴퓨터 <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--md-sys-color-primary-container)] via-secondary to-primary-container neon-glow drop-shadow-[0_0_15px_rgba(152,240,255,0.4)]">소프트웨어개발자</span>로의 첫 걸음
+          </h1>
+          <p className="text-xl md:text-2xl text-on-surface-variant max-w-2xl font-light">
+            이곳은 저의 모든 삽질과 성장의 기록입니다. <br />
+            코드 한 줄에 담긴 고민과 기술의 본질을 탐구합니다.
           </p>
+          <div className="flex flex-wrap gap-4 pt-4">
+            <button className="px-8 py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-lg hover:scale-105 active:scale-95 transition-all neon-glow">
+              Explore Projects
+            </button>
+            <button className="px-8 py-4 rounded-full border border-outline-variant text-primary font-bold text-lg hover:bg-surface-container-low transition-all">
+              Read Blog
+            </button>
+          </div>
         </div>
         
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
-          gap: '2.5rem' 
-        }}>
-          <div className="glass-card" style={{ padding: '2.5rem' }}>
-            <div style={{ background: 'rgba(59, 130, 246, 0.1)', width: '60px', height: '60px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-              <Code size={32} color="var(--accent-primary)" />
+        {/* Hero Tech Decor */}
+        <div className="flex-1 relative hidden md:block">
+          <div className="glass-panel p-8 rounded-xl relative overflow-hidden group">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+              <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+              <div className="ml-4 text-xs font-mono text-on-surface-variant">terminal — zsh — 80x24</div>
             </div>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Clean Code</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-              나만 알아볼 수 있는 코드보다는, 누구나 읽고 이해하기 쉬운 코드를 작성하기 위해 노력합니다. 변수명 하나, 함수 분리 하나에도 의미를 담으려 합니다.
-            </p>
+            <div className="space-y-3 font-mono text-sm">
+              <p className="text-secondary"><span className="text-primary-container">$</span> git init</p>
+              <p className="text-on-surface-variant">Initialized empty Git repository in /users/student/evolution/</p>
+              <p className="text-secondary"><span className="text-primary-container">$</span> nano roadmap.md</p>
+              <div className="pl-4 border-l-2 border-primary-container/30 py-1 italic text-on-tertiary-fixed-variant">
+                # Journey of a Software Engineer<br />
+                1. Master the fundamentals<br />
+                2. Embrace the errors<br />
+                3. Build the future
+              </div>
+              <p className="text-secondary"><span className="text-primary-container">$</span> deploy --to production</p>
+              <p className="text-primary-fixed-dim font-bold animate-pulse">■■■■■■■■■■■■■■■■ 100% COMPLETE</p>
+            </div>
           </div>
           
-          <div className="glass-card" style={{ padding: '2.5rem' }}>
-            <div style={{ background: 'rgba(168, 85, 247, 0.1)', width: '60px', height: '60px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-              <span style={{ fontSize: '32px' }}>💻</span>
-            </div>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Constant Learning</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-              빠르게 변하는 IT 기술 속에서 도태되지 않도록 흔들리지 않는 기본기를 다지며, 새로운 프레임워크와 트렌드도 두려워하지 않고 시도합니다.
-            </p>
+          {/* Float elements */}
+          <div className="absolute -top-12 -right-8 glass-panel p-6 rounded-xl rotate-6 hover:rotate-0 transition-transform duration-500">
+            <span className="material-symbols-outlined text-4xl text-primary-container" style={{ fontVariationSettings: "'FILL' 1" }}>code</span>
           </div>
-          
-          <div className="glass-card" style={{ padding: '2.5rem' }}>
-            <div style={{ background: 'rgba(16, 185, 129, 0.1)', width: '60px', height: '60px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-              <Cpu size={32} color="#10b981" />
-            </div>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Deep Dive</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-              API만 가져다 쓰는 것을 넘어, 내부적으로 어떻게 동작하는지 컴퓨터 구조와 OS 레벨까지 깊이 파고드는 것을 지향합니다.
-            </p>
+          <div className="absolute -bottom-8 -left-4 glass-panel p-4 rounded-xl -rotate-12 hover:rotate-0 transition-transform duration-500">
+            <span className="material-symbols-outlined text-4xl text-secondary-container" style={{ fontVariationSettings: "'FILL' 1" }}>terminal</span>
           </div>
         </div>
       </section>
-
-      {/* Skills Showcase Section */}
-      <section style={{ padding: '6rem 0', borderBottom: '1px solid var(--border-color)' }}>
-        <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem', textAlign: 'center' }}>Current Tech Stack</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
-          <div>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span style={{ fontSize: '24px' }}>📖</span> 대학교 전공 교과
-            </h3>
-            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <li style={{ background: 'var(--card-bg)', padding: '1rem 1.5rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-                <strong>C / C++</strong> : 절차지향과 메모리, 포인터에 대한 이해
-              </li>
-              <li style={{ background: 'var(--card-bg)', padding: '1rem 1.5rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-                <strong>Java</strong> : 객체지향 패러다임(OOP)과 다형성, 인터페이스 활용
-              </li>
-              <li style={{ background: 'var(--card-bg)', padding: '1rem 1.5rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-                <strong>Data Structure</strong> : 스택, 큐, 트리, 그래프 등의 개념 및 직접 구현
-              </li>
-            </ul>
+      
+      {/* Bento Grid: Tech Stack & Focus */}
+      <section className="max-w-7xl mx-auto px-8 py-24 bg-surface-container-low/50">
+        <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+          {/* Large Card: Main Vision with Custom Image */}
+          <div className="md:col-span-2 md:row-span-2 glass-panel rounded-xl p-10 flex flex-col justify-end group overflow-hidden relative">
+            <div className="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-700">
+              <img 
+                alt="Abstract AI Core" 
+                className="w-full h-full object-cover" 
+                src={`${import.meta.env.BASE_URL}images/hero_banner_1776137769184.png`} 
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#10131a] via-[#10131a]/80 to-transparent"></div>
+            <div className="relative z-10">
+              <div className="text-primary-container font-mono text-xs uppercase tracking-widest mb-4">Core_Philosophy</div>
+              <h3 className="text-3xl font-headline font-bold mb-4 text-primary">창의적인 문제 해결사</h3>
+              <p className="text-on-surface-variant leading-relaxed text-shadow-sm font-semibold">단순히 코드를 작성하는 것을 넘어, 비즈니스 가치를 창출하고 사용자의 삶을 개선하는 소프트웨어를 설계합니다. 탄탄한 기초 지식 위에 최신 기술 트렌드를 유연하게 접목합니다.</p>
+            </div>
           </div>
-
-          <div>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span style={{ fontSize: '24px' }}>📱</span> 개인 학습 및 웹 개발
-            </h3>
-            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <li style={{ background: 'var(--card-bg)', padding: '1rem 1.5rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-                <strong>HTML/CSS & JavaScript</strong> : 웹 프론트엔드 기초 및 DOM 조작
-              </li>
-              <li style={{ background: 'var(--card-bg)', padding: '1rem 1.5rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-                <strong>React.js & Vite</strong> : 컴포넌트 기반 UI 설계와 빠른 빌드 환경
-              </li>
-              <li style={{ background: 'var(--card-bg)', padding: '1rem 1.5rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-                <strong>Git & GitHub</strong> : 버전 관리와 협업, GitHub Pages를 활용한 자동 배포
-              </li>
-            </ul>
+          
+          {/* Featured Project Card */}
+          <div className="md:col-span-2 glass-panel rounded-xl p-8 flex items-center justify-between group">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="bg-secondary-container/20 text-secondary text-[10px] px-2 py-0.5 rounded uppercase font-mono">Latest Project</span>
+              </div>
+              <h4 className="text-xl font-headline font-bold text-primary">Neo-Kernel OS Mockup</h4>
+              <p className="text-sm text-on-surface-variant mt-2">C++을 이용한 간단한 운영체제 커널 구조 설계 및 메모리 관리 프로젝트</p>
+            </div>
+            <div className="hidden sm:block">
+              <span className="material-symbols-outlined text-5xl text-outline-variant group-hover:text-primary-container transition-colors">memory</span>
+            </div>
+          </div>
+          
+          {/* Skill 1 */}
+          <div className="glass-panel rounded-xl p-6 flex flex-col items-center justify-center text-center group">
+            <div className="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <span className="material-symbols-outlined text-primary-container">database</span>
+            </div>
+            <span className="text-primary font-headline font-medium">Backend Architecture</span>
+          </div>
+          
+          {/* Skill 2 */}
+          <div className="glass-panel rounded-xl p-6 flex flex-col items-center justify-center text-center group">
+            <div className="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <span className="material-symbols-outlined text-secondary-container">cloud</span>
+            </div>
+            <span className="text-primary font-headline font-medium">Cloud Infrastructure</span>
           </div>
         </div>
       </section>
-
-      {/* Future Projects or Interests */}
-      <section style={{ padding: '6rem 0', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>Let's Build Something Awesome</h2>
-        <p style={{ maxWidth: '600px', margin: '0 auto 3rem', fontSize: '1.1rem', color: 'var(--text-secondary)' }}>
-          항상 새로운 프로젝트 아이디어를 구상하고 있습니다. 알고리즘 스터디, 해커톤 팀원, 혹은 사이드 프로젝트를 함께할 동료를 찾고 있다면 언제든 환영합니다!
-        </p>
+      
+      {/* Featured Articles with Custom Images */}
+      <section className="max-w-7xl mx-auto px-8 py-24">
+        <div className="flex justify-between items-end mb-12">
+          <div>
+            <h2 className="text-4xl font-headline font-bold text-primary">Featured Logs</h2>
+            <p className="text-on-surface-variant mt-2">최근 학습한 내용과 해결했던 문제들의 기록</p>
+          </div>
+          <a className="text-primary-container flex items-center gap-2 font-headline font-medium hover:underline" href="#">
+            View Archive <span className="material-symbols-outlined">arrow_forward</span>
+          </a>
+        </div>
         
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
-          <a href="https://github.com" target="_blank" rel="noreferrer" className="glass-card" style={{ padding: '1.5rem 3rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', textDecoration: 'none', color: 'inherit', transition: 'transform 0.2s', cursor: 'pointer' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
-            <span style={{ fontSize: '40px' }}>🐙</span>
-            <span style={{ fontWeight: '500' }}>GitHub 프로필</span>
-          </a>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Blog Card 1 */}
+          <div className="flex flex-col group cursor-pointer bg-surface-container-high/30 p-4 rounded-2xl hover:bg-surface-container-high/60 transition-colors">
+            <div className="relative h-48 rounded-xl overflow-hidden mb-6 shadow-lg shadow-black/50">
+              <img 
+                alt="Programming desk setup" 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
+                src={`${import.meta.env.BASE_URL}images/blog_thumb_1_1776137849063.png`} 
+              />
+              <div className="absolute top-4 left-4">
+                <span className="bg-surface/90 backdrop-blur px-3 py-1 rounded-full text-xs font-mono text-primary-fixed-dim border border-primary-container/20">ALGORITHM</span>
+              </div>
+            </div>
+            <div className="space-y-3 px-2">
+              <div className="text-xs font-mono text-on-surface-variant uppercase tracking-widest">Oct 24, 2023 // 12 min read</div>
+              <h3 className="text-xl font-headline font-bold text-primary group-hover:text-primary-container transition-colors">왜 자바스크립트는 싱글 스레드인가? : 이벤트 루프의 심연</h3>
+              <p className="text-on-surface-variant line-clamp-2">비동기 처리의 핵심인 이벤트 루프와 태스크 큐의 작동 방식을 그림과 함께 깊게 파헤쳐 봅니다.</p>
+            </div>
+          </div>
           
-          <a href="mailto:example@gmail.com" className="glass-card" style={{ padding: '1.5rem 3rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', textDecoration: 'none', color: 'inherit', transition: 'transform 0.2s', cursor: 'pointer' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
-            <span style={{ fontSize: '40px' }}>✉️</span>
-            <span style={{ fontWeight: '500' }}>이메일 보내기</span>
-          </a>
+          {/* Blog Card 2 */}
+          <div className="flex flex-col group cursor-pointer bg-surface-container-high/30 p-4 rounded-2xl hover:bg-surface-container-high/60 transition-colors">
+            <div className="relative h-48 rounded-xl overflow-hidden mb-6 shadow-lg shadow-black/50">
+              <img 
+                alt="Motherboard Macro" 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
+                src={`${import.meta.env.BASE_URL}images/blog_thumb_2_1776137864789.png`} 
+              />
+              <div className="absolute top-4 left-4">
+                <span className="bg-surface/90 backdrop-blur px-3 py-1 rounded-full text-xs font-mono text-secondary-container border border-secondary/20">ARCHITECTURE</span>
+              </div>
+            </div>
+            <div className="space-y-3 px-2">
+              <div className="text-xs font-mono text-on-surface-variant uppercase tracking-widest">Nov 02, 2023 // 8 min read</div>
+              <h3 className="text-xl font-headline font-bold text-primary group-hover:text-primary-container transition-colors">Clean Architecture: 도메인 중심의 설계 실전 적용기</h3>
+              <p className="text-on-surface-variant line-clamp-2">외부 프레임워크에 의존하지 않는 유연한 아키텍처를 구축하며 겪은 고민들을 공유합니다.</p>
+            </div>
+          </div>
+          
+          {/* Blog Card 3 */}
+          <div className="flex flex-col group cursor-pointer bg-surface-container-high/30 p-4 rounded-2xl hover:bg-surface-container-high/60 transition-colors">
+            <div className="relative h-48 rounded-xl overflow-hidden mb-6 shadow-lg shadow-black/50">
+              <img 
+                alt="Docker blocks" 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
+                src={`${import.meta.env.BASE_URL}images/blog_thumb_3_1776137887387.png`} 
+              />
+              <div className="absolute top-4 left-4">
+                <span className="bg-surface/90 backdrop-blur px-3 py-1 rounded-full text-xs font-mono text-tertiary-fixed border border-tertiary-fixed/20">DEVOPS</span>
+              </div>
+            </div>
+            <div className="space-y-3 px-2">
+              <div className="text-xs font-mono text-on-surface-variant uppercase tracking-widest">Dec 15, 2023 // 15 min read</div>
+              <h3 className="text-xl font-headline font-bold text-primary group-hover:text-primary-container transition-colors">CI/CD 파이프라인 구축: Github Actions로 자동화하기</h3>
+              <p className="text-on-surface-variant line-clamp-2">코드 커밋부터 배포까지, 개발자의 수고를 덜어주는 자동화 프로세스 구축 가이드입니다.</p>
+            </div>
+          </div>
         </div>
       </section>
-    </div>
+      
+      {/* Technical Newsletter / Call to Action */}
+      <section className="max-w-5xl mx-auto px-8 py-24">
+        <div className="glass-panel p-12 rounded-2xl relative overflow-hidden text-center">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary-container/10 blur-[80px] -z-10"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary-container/10 blur-[80px] -z-10"></div>
+          <h2 className="text-3xl md:text-5xl font-headline font-bold text-primary mb-6">Stay ahead of the loop</h2>
+          <p className="text-on-surface-variant text-lg mb-10 max-w-xl mx-auto">새로운 기술 트렌드와 개발 삽질기를 이메일로 받아보세요. 스팸은 절대 보내지 않습니다.</p>
+          <form className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
+            <input className="flex-1 bg-surface-container-lowest border-b-2 border-outline-variant focus:border-primary-container focus:ring-0 px-6 py-4 text-primary outline-none transition-all" placeholder="email@example.com" type="email"/>
+            <button className="bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold px-10 py-4 rounded-full neon-glow hover:scale-105 transition-all outline-none border-none cursor-pointer">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section>
+    </motion.div>
   );
 };
 
